@@ -1,5 +1,5 @@
 const BASE_URL = 'https://restcountries.com/v3.1/name/';
-const options = 'name.official,capital,population,flags,languages';
+const options = 'name.official,capital,population,flags.svg,languages';
 
 function fetchCountries(name) {
     return fetch(`${BASE_URL}${name}?fields=${COUNTRY_FIELDS}`)
