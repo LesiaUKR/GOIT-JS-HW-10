@@ -1,5 +1,8 @@
+const BASE_URL = 'https://restcountries.com/v3.1/name/';
+const options = 'name.official,capital,population,flags,languages';
+
 function fetchCountries(name) {
-    return fetch(`https://restcountries.com/v3.1/name/${name}?fields=name.official,capital,population,flags.svg,languages`)
+    return fetch(`${BASE_URL}${name}?fields=${COUNTRY_FIELDS}`)
      .then(resp => {
         if (!resp.ok) {
             throw new Error(resp.statusText);
