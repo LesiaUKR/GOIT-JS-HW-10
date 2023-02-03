@@ -11,18 +11,27 @@ const countryInfo = document.querySelector('.country-info');
 input.addEventListener('input', debounce(searchCountry, DEBOUNCE_DELAY));
 
 function searchCountry(event) {
-    const findCountry = event.target.value.trim();
-    fetchCountries(findCountry)
+    const countryName = event.target.value.trim();
+    console.log(countryName)
+     if (!searchCountry) {
+        clearPage();
+        return
+    }
+    return fetchCountries(countryName)
+        .then(country => {
+            console.log(country);
+               createMarkupCountryList(countryName);
+    });
         };
 
-// function createMarkup(arr) {
-//     const markup = arr.map(({
-//         name,
-//         race
-//     }) => `<li>
-// <img class='counries-item_flag' src='${}' alt='flag of ${}'width='30'>
-// <h2 class='countries-item__name'>${country.name.common}</h2>
-// </li>`).join('')
+function createMarkupCountryList(countries) {
+    const markup = countries.map(({
+        name,
+        flags
+    }) => `<li>
+<img class='counries-item_flag' src='${flags.svg}' alt='flag of ${name}'width='30'>
+<h2 class='countries-item__name'>${name.official}</h2>
+</li>`).join('')
 
-//     list.insertAdjacentHTML('beforeend', markup)
-// }
+        countryList.innerHTML = markup;
+}
