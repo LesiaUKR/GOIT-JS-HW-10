@@ -23,7 +23,7 @@ function searchCountry(event) {
                 Notiflix.Notify.info('Too many matches found. Please enter a more specific name.')
                 clearPage();
                 return;
-            } else if (country.length >= 2 && country.length <= 10) {
+            } else if (country.length >= 2) {
                 createMarkupCountryList(country)
                 countryInfo.innerHTML = '';
             } else if (country.length === 1) {
@@ -37,7 +37,7 @@ function searchCountry(event) {
             clearPage();
             return error;
         });
-        };
+        }
 
 function createMarkupCountryList(countries) {
     const markup = countries.map(({
