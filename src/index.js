@@ -13,7 +13,7 @@ input.addEventListener('input', debounce(searchCountry, DEBOUNCE_DELAY));
 function searchCountry(event) {
     const countryName = event.target.value.trim();
     console.log(countryName)
-     if (!searchCountry) {
+     if (!countryName) {
         clearPage();
         return
     }
